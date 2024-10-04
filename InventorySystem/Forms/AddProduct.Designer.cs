@@ -113,9 +113,7 @@
             textBox3.Location = new Point(140, 173);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(140, 23);
-            textBox3.TabIndex = 8;
-            textBox3.TextChanged += textBox3_TextChanged;
-            // 
+            textBox3.TabIndex = 8;            // 
             // textBox4
             // 
             textBox4.Location = new Point(140, 211);

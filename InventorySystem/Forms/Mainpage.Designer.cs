@@ -83,7 +83,6 @@
             label2.Size = new Size(48, 21);
             label2.TabIndex = 3;
             label2.Text = "Parts";
-            label2.Click += label2_Click;
             // 
             // label3
             // 
@@ -94,7 +93,6 @@
             label3.Size = new Size(77, 21);
             label3.TabIndex = 4;
             label3.Text = "Products";
-            label3.Click += label3_Click;
             // 
             // searchProductsTextBox
             // 
@@ -130,9 +128,7 @@
             searchTextBox.Location = new Point(511, 111);
             searchTextBox.Name = "searchTextBox";
             searchTextBox.Size = new Size(164, 23);
-            searchTextBox.TabIndex = 8;
-            searchTextBox.TextChanged += textBox2_TextChanged;
-            // 
+            searchTextBox.TabIndex = 8;            // 
             // button3
             // 
             button3.Location = new Point(1199, 430);

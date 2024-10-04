@@ -57,9 +57,7 @@
             label1.Name = "label1";
             label1.Size = new Size(119, 25);
             label1.TabIndex = 0;
-            label1.Text = "Modify Part";
-            label1.Click += label1_Click;
-            // 
+            label1.Text = "Modify Part";            // 
             // radioButton1
             // 
             radioButton1.AutoSize = true;
@@ -135,7 +133,6 @@
             inventoryTextBox.Name = "inventoryTextBox";
             inventoryTextBox.Size = new Size(140, 23);
             inventoryTextBox.TabIndex = 8;
-            inventoryTextBox.TextChanged += textBox3_TextChanged;
             // 
             // priceTextBox
             // 
@@ -143,7 +140,6 @@
             priceTextBox.Name = "priceTextBox";
             priceTextBox.Size = new Size(140, 23);
             priceTextBox.TabIndex = 9;
-            priceTextBox.TextChanged += textBox4_TextChanged;
             // 
             // label5
             // 
