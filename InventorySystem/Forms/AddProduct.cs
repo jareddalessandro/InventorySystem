@@ -107,7 +107,7 @@ namespace InventorySystem
             string Name = textBox2.Text;
 
 
-            Product product = new Product(Name, Price, Min, Max, inStock);
+            Product product = new Product(Name, Price, inStock, Min, Max);
             product.AssociatedParts = _product.AssociatedParts;
             _inventory.addProduct(product);
             Close();

@@ -22,11 +22,8 @@ namespace InventorySystem.Models
         }
         public bool removeProduct(int ID)
         {
-            if (Products.Remove(Products[ID]))
-            {
-                return true;
-            }
-            return false;
+            Product productToRemove = lookupProduct(ID);
+            return Products.Remove(productToRemove);
         }
 
         public Product lookupProduct(int ID)
@@ -41,11 +38,22 @@ namespace InventorySystem.Models
             return new Product();
         }
 
-        public void updateProduct(int ID, Product product)
+        public void updateProduct(int productID, Product updatedProduct)
         {
-            Products.RemoveAt(ID);
-            product.ProductID = generateProductID();
-            Products.Add(product);
+            // Find the part in AllParts with the matching PartID
+            int index = Products.ToList().FindIndex(p => p.ProductID == productID);
+
+            // Check if the part was found
+            if (index != -1)
+            {
+                // Update the part while keeping the existing PartID
+                updatedProduct.ProductID = productID; // Preserve the existing PartID
+                Products[index] = updatedProduct; // Replace the part at the found index
+            }
+            else
+            {
+                throw new ArgumentException("Part with the specified ID not found.");
+            }
         }
 
         public void addPart(Part part)
@@ -56,11 +64,8 @@ namespace InventorySystem.Models
 
         public bool deletePart(Part part)
         {
-            if (AllParts.Remove(AllParts[part.PartID]))
-            {
-                return true;
-            }
-            return false;
+            Part partToRemove = lookupPart(part.PartID);
+            return AllParts.Remove(partToRemove);
         }
 
         public Part lookupPart(int ID)
@@ -76,23 +81,34 @@ namespace InventorySystem.Models
             
         }
 
-        public void updatePart(int ID, Part part)
+        public void updatePart(int partID, Part updatedPart)
         {
-            AllParts.RemoveAt(ID);
-            part.PartID = generatePartID();
-            AllParts.Add(part);
+            // Find the part in AllParts with the matching PartID
+            int index = AllParts.ToList().FindIndex(p => p.PartID == partID);
+
+            // Check if the part was found
+            if (index != -1)
+            {
+                // Update the part while keeping the existing PartID
+                updatedPart.PartID = partID; // Preserve the existing PartID
+                AllParts[index] = updatedPart; // Replace the part at the found index
+            }
+            else
+            {
+                throw new ArgumentException("Part with the specified ID not found.");
+            }
         }
 
         public void populateDefaultValues()
         {
-            Product product = new Product("Example Product", 10.99m, 3, 5, 7);
+            Product product = new Product("Example Product", 10.99m, 5, 5, 7);
             addProduct(product);
             Product product2 = new Product("Second Product", 15.99m, 6, 5, 6);
             addProduct(product2);
 
-            OutSourcedPart outSourcedPart = new OutSourcedPart("Flux Capacitor", 5.99m, 3, 7, 13, "GE");
+            OutSourcedPart outSourcedPart = new OutSourcedPart("Flux Capacitor", 5.99m, 3, 15, 13, "GE");
             addPart(outSourcedPart);
-            InHousePart inHousePart = new InHousePart("Transformer", 17.99m, 12, 29, 9, 07318);
+            InHousePart inHousePart = new InHousePart("Transformer", 17.99m, 12, 29, 13, 07318);
             addPart(inHousePart);
         }
 
