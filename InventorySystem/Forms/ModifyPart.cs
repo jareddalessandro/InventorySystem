@@ -14,6 +14,7 @@ namespace InventorySystem
     public partial class ModifyPart : Form
     {
         private Inventory _inventory;
+        private int _currentPartID;
         internal ModifyPart(Inventory inventory, Part part)
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace InventorySystem
             priceTextBox.Text = Convert.ToString(part.Price);
             minTextBox.Text = Convert.ToString(part.Min);
             maxTextBox.Text = Convert.ToString(part.Max);
-
+            _currentPartID = part.PartID;
             // Check if the part is of type InHousePart
             if (part is InHousePart inHousePart)
             {
@@ -111,14 +112,15 @@ namespace InventorySystem
                 }
 
                 InHousePart part = new InHousePart(Name, Price, Min, Max, inStock, MachineID);
-                _inventory.updatePart(part.PartID, part);
+
+                _inventory.updatePart(_currentPartID, part);
                 Close();
             }
             else
             {
                 string CompanyName = machineOrCompanyTextBox.Text;
                 OutSourcedPart part = new OutSourcedPart(Name, Price, Min, Max, inStock, CompanyName);
-                _inventory.updatePart(part.PartID, part);
+                _inventory.updatePart(_currentPartID, part);
                 Close();
             }
         }

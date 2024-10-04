@@ -46,7 +46,7 @@ namespace InventorySystem
             try
             {
                 inStock = int.Parse(inventoryTextBox.Text);
-                Price = int.Parse(PriceTextBox.Text);
+                Price = decimal.Parse(PriceTextBox.Text);
                 Min = int.Parse(minTextBox.Text);
                 Max = int.Parse(maxTextBox.Text);
             }
