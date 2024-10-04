@@ -78,7 +78,7 @@ namespace InventorySystem
 
         private void button3_Click(object sender, EventArgs e)
         {
-            AddProduct addProductForm = new AddProduct();
+            AddProduct addProductForm = new AddProduct(inventory);
             addProductForm.Show();
         }
 
@@ -96,11 +96,7 @@ namespace InventorySystem
 
                 if (result == DialogResult.Yes)
                 {
-                    // Confirm before deleting (optional)
-                    foreach (DataGridViewRow row in partsGridView.SelectedRows)
-                    {
-                        partsGridView.Rows.RemoveAt(row.Index);
-                    }
+                    inventory.deletePart((Part)partsGridView.SelectedRows[0].DataBoundItem);
                 }
             }
         }
@@ -112,11 +108,8 @@ namespace InventorySystem
                 var result = MessageBox.Show($"Are you sure you want to delete the selected Product?", "Confirm Deletion", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    // Confirm before deleting (optional)
-                    foreach (DataGridViewRow row in productsGridView.SelectedRows)
-                    {
-                        productsGridView.Rows.RemoveAt(row.Index);
-                    }
+                    Product selectedProduct = (Product)productsGridView.SelectedRows[0].DataBoundItem;
+                    inventory.removeProduct(selectedProduct.ProductID);
                 }
             }
         }
@@ -133,6 +126,10 @@ namespace InventorySystem
                     try
                     {
                         Part foundPart = inventory.lookupPart(searchID);
+                        if (foundPart.Name == null)
+                        {
+                            throw new ArgumentException("Part ID");
+                        }
                         var filteredList = new BindingList<Part> { foundPart };
 
                         // Update the BindingSource DataSource with the filtered list
@@ -170,6 +167,10 @@ namespace InventorySystem
                     try
                     {
                         Product foundProduct = inventory.lookupProduct(searchID);
+                        if (foundProduct.Name == null)
+                        {
+                            throw new ArgumentException("Product ID");
+                        }
                         var filteredList = new BindingList<Product> { foundProduct };
 
                         // Update the BindingSource DataSource with the filtered list

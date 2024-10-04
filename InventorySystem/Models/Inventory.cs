@@ -31,7 +31,14 @@ namespace InventorySystem.Models
 
         public Product lookupProduct(int ID)
         {
-            return Products[ID];
+            foreach(Product product in Products)
+            {
+                if (product.ProductID == ID)
+                {
+                    return product;
+                }
+            }
+            return new Product();
         }
 
         public void updateProduct(int ID, Product product)
@@ -47,9 +54,9 @@ namespace InventorySystem.Models
             AllParts.Add(part);
         }
 
-        public bool deletePart(int ID)
+        public bool deletePart(Part part)
         {
-            if (AllParts.Remove(AllParts[ID]))
+            if (AllParts.Remove(AllParts[part.PartID]))
             {
                 return true;
             }
@@ -58,7 +65,15 @@ namespace InventorySystem.Models
 
         public Part lookupPart(int ID)
         {
-            return AllParts[ID];
+            foreach (Part part in AllParts)
+            {
+                if (part.PartID == ID)
+                {
+                    return part;
+                }
+            }
+            return new InHousePart();
+            
         }
 
         public void updatePart(int ID, Part part)
@@ -77,7 +92,6 @@ namespace InventorySystem.Models
 
             OutSourcedPart outSourcedPart = new OutSourcedPart("Flux Capacitor", 5.99m, 3, 7, 13, "GE");
             addPart(outSourcedPart);
-
             InHousePart inHousePart = new InHousePart("Transformer", 17.99m, 12, 29, 9, 07318);
             addPart(inHousePart);
         }

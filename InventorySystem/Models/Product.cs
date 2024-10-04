@@ -9,7 +9,7 @@ namespace InventorySystem.Models
 {
     internal class Product
     {
-        BindingList<Part> AssociatedParts { get; set; }
+        public BindingList<Part> AssociatedParts = new BindingList<Part>();
         public int ProductID { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
@@ -42,7 +42,14 @@ namespace InventorySystem.Models
 
         public Part lookupAssociatedPart(int ID)
         {
-            return AssociatedParts[ID];
+            foreach (Part part in AssociatedParts)
+            {
+                if (part.PartID == ID)
+                {
+                    return part;
+                }
+            }
+            return new InHousePart();
         }
     }
 }

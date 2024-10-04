@@ -104,6 +104,12 @@ namespace InventorySystem
                 return;
             }
 
+            if (inStock > Max || inStock < Min)
+            {
+                MessageBox.Show("Error: Inventory must be between Min and Max values.");
+                return;
+            }
+
             string Name = nameTextBox.Text;
             if (radioButton1.Checked)
             {
