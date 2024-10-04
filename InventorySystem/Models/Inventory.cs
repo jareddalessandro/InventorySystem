@@ -64,6 +64,15 @@ namespace InventorySystem.Models
 
         public bool deletePart(Part part)
         {
+            foreach (Product product in Products)
+            {
+                if (product.AssociatedParts.Any(p => p.PartID == part.PartID))
+                {
+                    // Part is associated with a product; prevent deletion
+                    MessageBox.Show("This part is associated with one or more products and cannot be deleted.", "Delete Part", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
             Part partToRemove = lookupPart(part.PartID);
             return AllParts.Remove(partToRemove);
         }
