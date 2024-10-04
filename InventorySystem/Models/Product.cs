@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InventorySystem.Models
+{
+    internal class Product
+    {
+        BindingList<Part> AssociatedParts { get; set; }
+        public int ProductID { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public int InStock { get; set; }
+        public int Min {  get; set; }
+        public int Max { get; set; }
+
+        public Product() { }
+        public Product(string name, decimal price, int inStock, int min, int max)
+        {
+            Name = name;
+            Price = price;
+            InStock = inStock;
+            Min = min;
+            Max = max;
+        }
+
+        public void addAssociatedPart(Part part)
+        {
+            AssociatedParts.Add(part); 
+        }
+        public bool removeAssociatedPart(int ID) {
+
+            if (AssociatedParts.Remove(AssociatedParts[ID]))
+            {
+                return true;
+            }
+            else { return false; }
+        }
+
+        public Part lookupAssociatedPart(int ID)
+        {
+            return AssociatedParts[ID];
+        }
+    }
+}

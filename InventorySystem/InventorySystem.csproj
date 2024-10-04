@@ -8,4 +8,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="Forms\ModifyProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AddProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\ModifyPart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>
