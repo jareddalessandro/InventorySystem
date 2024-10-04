@@ -71,9 +71,10 @@ namespace InventorySystem.Models
         public void populateDefaultValues()
         {
             Product product = new Product("Example Product", 10.99m, 3, 5, 7);
-            Products.Add(product);
+            addProduct(product);
+            Product product2 = new Product("Second Product", 15.99m, 6, 5, 6);
+            addProduct(product2);
 
-            
             OutSourcedPart outSourcedPart = new OutSourcedPart("Flux Capacitor", 5.99m, 3, 7, 13, "GE");
             addPart(outSourcedPart);
 

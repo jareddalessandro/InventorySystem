@@ -98,6 +98,12 @@ namespace InventorySystem
                 return;
             }
 
+            if (Min > Max)
+            {
+                MessageBox.Show("Error: Min can not be larger than Max.");
+                return;
+            }
+
             string Name = nameTextBox.Text;
             if (radioButton1.Checked)
             {

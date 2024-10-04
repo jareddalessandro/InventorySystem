@@ -125,7 +125,7 @@ namespace InventorySystem
         {
             if (searchTextBox.Text.Length > 0)
             {
-                
+
                 try
                 {
                     int searchID = int.Parse(searchTextBox.Text);
@@ -138,7 +138,7 @@ namespace InventorySystem
                         // Update the BindingSource DataSource with the filtered list
                         partsGridView.DataSource = filteredList;
                     }
-                    catch 
+                    catch
                     {
                         MessageBox.Show($"Error: No Matching Part ID Found.", "Error", MessageBoxButtons.OK);
                     }
@@ -146,8 +146,8 @@ namespace InventorySystem
                 catch
                 {
                     MessageBox.Show($"Please enter a Part ID to query for.", "Error", MessageBoxButtons.OK);
-                }               
-                
+                }
+
             }
             else
             {
@@ -155,7 +155,41 @@ namespace InventorySystem
             }
 
 
-            
+
+        }
+
+        private void searchProductButton_Click(object sender, EventArgs e)
+        {
+            if (searchProductsTextBox.Text.Length > 0)
+            {
+
+                try
+                {
+                    int searchID = int.Parse(searchProductsTextBox.Text);
+
+                    try
+                    {
+                        Product foundProduct = inventory.lookupProduct(searchID);
+                        var filteredList = new BindingList<Product> { foundProduct };
+
+                        // Update the BindingSource DataSource with the filtered list
+                        productsGridView.DataSource = filteredList;
+                    }
+                    catch
+                    {
+                        MessageBox.Show($"Error: No Matching Product ID Found.", "Error", MessageBoxButtons.OK);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show($"Please enter a Product ID to query for.", "Error", MessageBoxButtons.OK);
+                }
+
+            }
+            else
+            {
+                productsGridView.DataSource = inventory.Products;
+            }
         }
     }
 }

@@ -33,8 +33,8 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
-            button1 = new Button();
+            searchProductsTextBox = new TextBox();
+            searchProductButton = new Button();
             searchButton = new Button();
             searchTextBox = new TextBox();
             button3 = new Button();
@@ -96,22 +96,23 @@
             label3.Text = "Products";
             label3.Click += label3_Click;
             // 
-            // textBox1
+            // searchProductsTextBox
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(1227, 113);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(164, 23);
-            textBox1.TabIndex = 5;
+            searchProductsTextBox.BorderStyle = BorderStyle.FixedSingle;
+            searchProductsTextBox.Location = new Point(1227, 113);
+            searchProductsTextBox.Name = "searchProductsTextBox";
+            searchProductsTextBox.Size = new Size(164, 23);
+            searchProductsTextBox.TabIndex = 5;
             // 
-            // button1
+            // searchProductButton
             // 
-            button1.Location = new Point(1161, 113);
-            button1.Name = "button1";
-            button1.Size = new Size(60, 23);
-            button1.TabIndex = 6;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = true;
+            searchProductButton.Location = new Point(1161, 113);
+            searchProductButton.Name = "searchProductButton";
+            searchProductButton.Size = new Size(60, 23);
+            searchProductButton.TabIndex = 6;
+            searchProductButton.Text = "Search";
+            searchProductButton.UseVisualStyleBackColor = true;
+            searchProductButton.Click += searchProductButton_Click;
             // 
             // searchButton
             // 
@@ -216,8 +217,8 @@
             Controls.Add(button3);
             Controls.Add(searchTextBox);
             Controls.Add(searchButton);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(searchProductButton);
+            Controls.Add(searchProductsTextBox);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -238,8 +239,8 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
-        private Button button1;
+        private TextBox searchProductsTextBox;
+        private Button searchProductButton;
         private Button searchButton;
         private TextBox searchTextBox;
         private Button button3;
