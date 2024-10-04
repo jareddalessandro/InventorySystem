@@ -84,8 +84,14 @@ namespace InventorySystem
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ModifyProduct modifyProductForm = new ModifyProduct(inventory);
-            modifyProductForm.Show();
+            if (productsGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = productsGridView.SelectedRows[0];
+                // Cast the DataBoundItem to a Part object
+                Product selectedPart = (Product)selectedRow.DataBoundItem;
+                ModifyProduct modifyProductForm = new ModifyProduct(inventory, selectedPart);
+                modifyProductForm.Show();
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)

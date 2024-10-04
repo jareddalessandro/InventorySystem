@@ -41,15 +41,16 @@
             textBox6 = new TextBox();
             label6 = new Label();
             label7 = new Label();
-            button1 = new Button();
+            saveButton = new Button();
             button2 = new Button();
-            dataGridView1 = new DataGridView();
-            dataGridView2 = new DataGridView();
-            button3 = new Button();
+            partGridView = new DataGridView();
+            associatedGridView = new DataGridView();
+            addPart = new Button();
             textBox7 = new TextBox();
             button4 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            deletePartButton = new Button();
+            ((System.ComponentModel.ISupportInitialize)partGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)associatedGridView).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -74,6 +75,7 @@
             // 
             // textBox1
             // 
+            textBox1.Enabled = false;
             textBox1.Location = new Point(140, 99);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(140, 23);
@@ -165,50 +167,51 @@
             label7.TabIndex = 14;
             label7.Text = "Min";
             // 
-            // button1
+            // saveButton
             // 
-            button1.Enabled = false;
-            button1.Location = new Point(909, 468);
-            button1.Name = "button1";
-            button1.Size = new Size(53, 33);
-            button1.TabIndex = 17;
-            button1.Text = "Save";
-            button1.UseVisualStyleBackColor = true;
+            saveButton.Location = new Point(936, 493);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new Size(53, 33);
+            saveButton.TabIndex = 17;
+            saveButton.Text = "Save";
+            saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click_1;
             // 
             // button2
             // 
-            button2.Location = new Point(982, 468);
+            button2.Location = new Point(1011, 493);
             button2.Name = "button2";
             button2.Size = new Size(53, 33);
             button2.TabIndex = 18;
             button2.Text = "Cancel";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            button2.Click += button2_Click_1;
             // 
-            // dataGridView1
+            // partGridView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(588, 64);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(493, 151);
-            dataGridView1.TabIndex = 19;
+            partGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            partGridView.Location = new Point(588, 64);
+            partGridView.Name = "partGridView";
+            partGridView.Size = new Size(493, 151);
+            partGridView.TabIndex = 19;
             // 
-            // dataGridView2
+            // associatedGridView
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(586, 274);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(495, 155);
-            dataGridView2.TabIndex = 20;
+            associatedGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            associatedGridView.Location = new Point(586, 274);
+            associatedGridView.Name = "associatedGridView";
+            associatedGridView.Size = new Size(495, 155);
+            associatedGridView.TabIndex = 20;
             // 
-            // button3
+            // addPart
             // 
-            button3.Location = new Point(1023, 234);
-            button3.Name = "button3";
-            button3.Size = new Size(58, 23);
-            button3.TabIndex = 21;
-            button3.Text = "Add";
-            button3.UseVisualStyleBackColor = true;
+            addPart.Location = new Point(1023, 234);
+            addPart.Name = "addPart";
+            addPart.Size = new Size(58, 23);
+            addPart.TabIndex = 21;
+            addPart.Text = "Add";
+            addPart.UseVisualStyleBackColor = true;
+            addPart.Click += addPart_Click_1;
             // 
             // textBox7
             // 
@@ -225,19 +228,31 @@
             button4.TabIndex = 23;
             button4.Text = "Search";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click_1;
+            // 
+            // deletePartButton
+            // 
+            deletePartButton.Location = new Point(1023, 451);
+            deletePartButton.Name = "deletePartButton";
+            deletePartButton.Size = new Size(58, 23);
+            deletePartButton.TabIndex = 25;
+            deletePartButton.Text = "Delete";
+            deletePartButton.UseVisualStyleBackColor = true;
+            deletePartButton.Click += deletePartButton_Click_1;
             // 
             // ModifyProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1118, 538);
+            Controls.Add(deletePartButton);
             Controls.Add(button4);
             Controls.Add(textBox7);
-            Controls.Add(button3);
-            Controls.Add(dataGridView2);
-            Controls.Add(dataGridView1);
+            Controls.Add(addPart);
+            Controls.Add(associatedGridView);
+            Controls.Add(partGridView);
             Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(saveButton);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(textBox6);
@@ -253,8 +268,8 @@
             Controls.Add(label1);
             Name = "ModifyProduct";
             Text = "Product";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)partGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)associatedGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -274,12 +289,13 @@
         private TextBox textBox6;
         private Label label6;
         private Label label7;
-        private Button button1;
+        private Button saveButton;
         private Button button2;
-        private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
-        private Button button3;
+        private DataGridView partGridView;
+        private DataGridView associatedGridView;
+        private Button addPart;
         private TextBox textBox7;
         private Button button4;
+        private Button deletePartButton;
     }
 }

@@ -78,8 +78,7 @@ namespace InventorySystem
             decimal Price;
             int Min;
             int Max;
-            int MachineID;
-
+            
             try
             {
                 inStock = int.Parse(textBox3.Text);

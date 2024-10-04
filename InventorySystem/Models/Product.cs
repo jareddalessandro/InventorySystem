@@ -25,6 +25,7 @@ namespace InventorySystem.Models
             InStock = inStock;
             Min = min;
             Max = max;
+            AssociatedParts = new BindingList<Part>(); // Initialize if needed in specific constructor
         }
 
         public void addAssociatedPart(Part part)
