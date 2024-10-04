@@ -35,8 +35,8 @@
             label3 = new Label();
             textBox1 = new TextBox();
             button1 = new Button();
-            button2 = new Button();
-            textBox2 = new TextBox();
+            searchButton = new Button();
+            searchTextBox = new TextBox();
             button3 = new Button();
             button4 = new Button();
             deleteProductsButton = new Button();
@@ -113,23 +113,24 @@
             button1.Text = "Search";
             button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // searchButton
             // 
-            button2.Location = new Point(445, 111);
-            button2.Name = "button2";
-            button2.Size = new Size(60, 23);
-            button2.TabIndex = 7;
-            button2.Text = "Search";
-            button2.UseVisualStyleBackColor = true;
+            searchButton.Location = new Point(445, 111);
+            searchButton.Name = "searchButton";
+            searchButton.Size = new Size(60, 23);
+            searchButton.TabIndex = 7;
+            searchButton.Text = "Search";
+            searchButton.UseVisualStyleBackColor = true;
+            searchButton.Click += searchButton_Click;
             // 
-            // textBox2
+            // searchTextBox
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Location = new Point(511, 111);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(164, 23);
-            textBox2.TabIndex = 8;
-            textBox2.TextChanged += textBox2_TextChanged;
+            searchTextBox.BorderStyle = BorderStyle.FixedSingle;
+            searchTextBox.Location = new Point(511, 111);
+            searchTextBox.Name = "searchTextBox";
+            searchTextBox.Size = new Size(164, 23);
+            searchTextBox.TabIndex = 8;
+            searchTextBox.TextChanged += textBox2_TextChanged;
             // 
             // button3
             // 
@@ -213,8 +214,8 @@
             Controls.Add(deleteProductsButton);
             Controls.Add(button4);
             Controls.Add(button3);
-            Controls.Add(textBox2);
-            Controls.Add(button2);
+            Controls.Add(searchTextBox);
+            Controls.Add(searchButton);
             Controls.Add(button1);
             Controls.Add(textBox1);
             Controls.Add(label3);
@@ -239,8 +240,8 @@
         private Label label3;
         private TextBox textBox1;
         private Button button1;
-        private Button button2;
-        private TextBox textBox2;
+        private Button searchButton;
+        private TextBox searchTextBox;
         private Button button3;
         private Button button4;
         private Button deleteProductsButton;

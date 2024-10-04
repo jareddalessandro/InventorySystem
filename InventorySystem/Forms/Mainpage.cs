@@ -1,4 +1,5 @@
 using InventorySystem.Models;
+using System.ComponentModel;
 
 namespace InventorySystem
 {
@@ -9,7 +10,7 @@ namespace InventorySystem
         {
             InitializeComponent();
 
-            
+
             inventory.populateDefaultValues();
 
             var productDataSource = new BindingSource();
@@ -118,6 +119,43 @@ namespace InventorySystem
                     }
                 }
             }
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            if (searchTextBox.Text.Length > 0)
+            {
+                
+                try
+                {
+                    int searchID = int.Parse(searchTextBox.Text);
+
+                    try
+                    {
+                        Part foundPart = inventory.lookupPart(searchID);
+                        var filteredList = new BindingList<Part> { foundPart };
+
+                        // Update the BindingSource DataSource with the filtered list
+                        partsGridView.DataSource = filteredList;
+                    }
+                    catch 
+                    {
+                        MessageBox.Show($"Error: No Matching Part ID Found.", "Error", MessageBoxButtons.OK);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show($"Please enter a Part ID to query for.", "Error", MessageBoxButtons.OK);
+                }               
+                
+            }
+            else
+            {
+                partsGridView.DataSource = inventory.AllParts;
+            }
+
+
+            
         }
     }
 }
