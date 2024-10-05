@@ -34,7 +34,8 @@ namespace InventorySystem.Models
         }
         public bool removeAssociatedPart(int ID) {
 
-            if (AssociatedParts.Remove(AssociatedParts[ID]))
+            Part foundPart = lookupAssociatedPart(ID);
+            if (AssociatedParts.Remove(foundPart))
             {
                 return true;
             }

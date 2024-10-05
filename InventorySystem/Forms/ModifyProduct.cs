@@ -123,7 +123,7 @@ namespace InventorySystem
 
                     try
                     {
-                        Part foundPart = _product.lookupAssociatedPart(searchID);
+                        Part foundPart = _inventory.lookupPart(searchID);
                         if (foundPart.Name == null)
                         {
                             throw new ArgumentException("Part ID");
@@ -131,7 +131,7 @@ namespace InventorySystem
                         var filteredList = new BindingList<Part> { foundPart };
 
                         // Update the BindingSource DataSource with the filtered list
-                        associatedGridView.DataSource = filteredList;
+                        partGridView.DataSource = filteredList;
                     }
                     catch
                     {
@@ -146,7 +146,7 @@ namespace InventorySystem
             }
             else
             {
-                associatedGridView.DataSource = _product.AssociatedParts;
+                partGridView.DataSource = _inventory.AllParts;
             }
         }
     }

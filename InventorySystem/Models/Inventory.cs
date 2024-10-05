@@ -119,6 +119,8 @@ namespace InventorySystem.Models
             addPart(outSourcedPart);
             InHousePart inHousePart = new InHousePart("Transformer", 17.99m, 12, 29, 13, 07318);
             addPart(inHousePart);
+            InHousePart inHousePart2 = new InHousePart("Conduit", 17.99m, 12, 29, 13, 07318);
+            addPart(inHousePart2);
         }
 
         public int generatePartID()

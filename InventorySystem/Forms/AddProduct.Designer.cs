@@ -49,6 +49,8 @@
             textBox7 = new TextBox();
             button4 = new Button();
             deletePartButton = new Button();
+            label8 = new Label();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)partGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)associatedGridView).BeginInit();
             SuspendLayout();
@@ -113,7 +115,8 @@
             textBox3.Location = new Point(140, 173);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(140, 23);
-            textBox3.TabIndex = 8;            // 
+            textBox3.TabIndex = 8;
+            // 
             // textBox4
             // 
             textBox4.Location = new Point(140, 211);
@@ -238,11 +241,31 @@
             deletePartButton.UseVisualStyleBackColor = true;
             deletePartButton.Click += deletePartButton_Click;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(586, 48);
+            label8.Name = "label8";
+            label8.Size = new Size(107, 15);
+            label8.TabIndex = 25;
+            label8.Text = "All Candidate Parts";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(588, 253);
+            label9.Name = "label9";
+            label9.Size = new Size(186, 15);
+            label9.TabIndex = 26;
+            label9.Text = "Parts Associated with this Product";
+            // 
             // AddProduct
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1118, 538);
+            Controls.Add(label9);
+            Controls.Add(label8);
             Controls.Add(deletePartButton);
             Controls.Add(button4);
             Controls.Add(textBox7);
@@ -295,5 +318,7 @@
         private TextBox textBox7;
         private Button button4;
         private Button deletePartButton;
+        private Label label8;
+        private Label label9;
     }
 }
